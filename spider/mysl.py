@@ -9,7 +9,6 @@ desired_caps = {
                 "noReset": "true",
                 "fullReset": "false"
 }
-
 server = 'http://localhost:4723/wd/hub'
 driver = webdriver.Remote(server, desired_caps)
 time.sleep(1)
