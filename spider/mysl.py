@@ -16,14 +16,11 @@ time.sleep(1)
 driver.find_element_by_xpath("//*[@text='蚂蚁森林']").click() #蚂蚁森林要在首页
 time.sleep(1)
 
-def Swipe(driver):
-    size = driver.get_window_size()
-    for i in range(4):
-        driver.swipe(size['width'] * 0.5, size['height'] * 0.9, size['width'] * 0.5, size['height'] * 0.2)
-    driver.find_element_by_xpath("//*[@text='查看更多好友']").click() #点击查看更多好友
-
 def run(driver):
-    Swipe(driver)
+    windowssize = driver.get_window_size()
+    for i in range(4):
+        driver.swipe(windowssize['width'] * 0.5, windowssize['height'] * 0.9, windowssize['width'] * 0.5, windowssize['height'] * 0.2)
+    driver.find_element_by_xpath("//*[@text='查看更多好友']").click()  # 点击查看更多好友
     n = 1
     #获取用户框大小
     usersize = driver.find_element_by_xpath('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.FrameLayout/com.uc.webview.export.WebView/com.uc.webkit.az/android.webkit.WebView/android.view.View/android.view.View/android.view.View[2]/android.view.View[1]').size
@@ -43,7 +40,6 @@ def run(driver):
 
         #个人主页收能量
         #向上滑动激活页面能量元素
-        windowssize = driver.get_window_size()
         driver.swipe(windowssize['width'] * 0.5, windowssize['height'] * 0.9, windowssize['width'] * 0.5, windowssize['height'] * 0.7)
         items = driver.find_elements_by_class_name("android.widget.Button")
         if len(items) >6: #另有6个页面中的固定元素
